@@ -1,7 +1,8 @@
 import java.util.Objects
 import java.util.Random
+import kotlin.math.absoluteValue
 
-class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassis: Chassis) {
+class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassis: Chassis, var fly : Boolean) {
 
     // выводим информацию о самолете
     override fun toString(): String {
@@ -9,7 +10,7 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(path, wings, engine, chassis)
+        return Objects.hash(path, wings, engine, chassis).absoluteValue
     }
 
     fun fly(id : Int) : Boolean {

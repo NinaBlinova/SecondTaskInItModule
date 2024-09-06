@@ -15,7 +15,7 @@ class Wing constructor (var lenght : Int, var area : Int) {
         return false
     }
 
-    // Переопределение метода hashCode(), чтобы использовать это как id крыла
+    // Переопределение метода hashCode(), чтобы задаывть id крыльев
     override fun hashCode(): Int {
         return Objects.hash(lenght, area)
     }
