@@ -2,7 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
 
-    val airplanes = mutableListOf<Airplane>() // Список самолетов
+    //val airplanes = mutableListOf<Airplane>() // Список самолетов
 
 
     print("Input path: ")
@@ -12,9 +12,9 @@ fun main() {
 
     println(airplane1.toString())
 
-    if (airplane1 != null) {
-        airplanes.add(airplane1)
-    }
+    //if (airplane1 != null) {
+    //    airplanes.add(airplane1)
+    //}
 
 
     print("Fly: Yes or no ... ")
@@ -23,7 +23,12 @@ fun main() {
     if (inputFly == "yes") {
         if (airplane1 != null) {
             airplane1.fly = airplane1.fly(airplane1.hashCode())
+            println("${airplane1.toString()}")
         }
+    }
+
+    else {
+        println("Самолет еще не взлетает '${airplane1.toString()}'")
     }
 
 

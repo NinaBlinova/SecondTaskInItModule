@@ -6,7 +6,7 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
 
     // выводим информацию о самолете
     override fun toString(): String {
-        return "Chassis(path: '$path',  ${wings.toString()}, '${engine.toString()}', '${chassis.toString()}')"
+        return "Chassis(path: '$path',  ${wings.toString()}, '${engine.toString()}', '${chassis.toString()}', fly: '$fly')"
     }
 
     override fun hashCode(): Int {
