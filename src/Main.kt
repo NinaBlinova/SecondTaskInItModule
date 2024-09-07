@@ -12,6 +12,7 @@ fun main() {
 
         if (input == "exit") {
             continueCreating = false
+
             break
         }
 
@@ -35,35 +36,18 @@ fun main() {
             Wing(wingLenght, wingArea),
             Engine(engineType, enginePower),
             Chassis(chassisMaterial, chassisWheelSize),
-            false // Изначально самолет не летает
+            false, // Изначально самолет не летает
         )
 
         airplanes.add(airplane)
-
         println("Airplane created: $airplane")
     }
 
-    // Сравнение элементов списка
-    var i = 1 // Начинаем со второго элемента
-    while (i < airplanes.size) {
-        val currentAirplane = airplanes[i]
-        val previousAirplane = airplanes[i - 1]
-
-        if (currentAirplane.equals(previousAirplane)) {
-            println("Duplicate found: $currentAirplane")
-            // Удаляем дубликат из списка
-            airplanes.removeAt(i) // Удаляем текущий элемент
-            // Не нужно делать шаг назад, так как список уже сдвинулся
-        } else {
-            i++ // Переходим к следующему элементу
-        }
-    }
-
-    println("Airplanes created:")
-    airplanes.forEach { println(it) }
+    val tablo = Tablo(airplanes).removeDuplicates()
+    println(tablo.toString())
 
 
-    airplanes.forEach {
+    tablo.forEach {
         print("Fly: Yes or no ... ")
         var inputFly = readLine()
         if (inputFly?.lowercase() == "yes") { // Используем lowercase() для сравнения
@@ -72,22 +56,5 @@ fun main() {
             println("Airplane with path ${it.path} is not taking off")
         }
     }
-
-
-
-
-   // print("Fly: Yes or no ... ")
-    //val inputFly = readLine()
-
-
-    /*
-    // Получаем хеш-код самолета
-    val airplaneId1 = airplane1.hashCode()
-
-    // Ищем самолет по хеш-коду
-    val foundAirplane1 = airplanes.find { it.hashCode() == airplaneId1 }
-
-    println("Information about airplane with ID $airplaneId1: $foundAirplane1")
-*/
 
 }
