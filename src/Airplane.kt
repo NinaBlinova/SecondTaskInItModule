@@ -20,4 +20,11 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
         return true // You could return a boolean indicating success or failure of takeoff
     }
 
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Airplane) return false
+
+        return path == other.path && wings == other.wings && engine == other.engine && chassis == other.chassis
+    }
+
 }

@@ -2,34 +2,71 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
 
-    //val airplanes = mutableListOf<Airplane>() // Список самолетов
+    val airplanes = mutableListOf<Airplane>() // Список самолетов
 
+    var continueCreating = true
 
-    print("Input path: ")
-    val input = readLine()
+    while (continueCreating) {
+        print("Input path (or 'exit' to stop): ")
+        val input = readLine()
 
-    val airplane1 = input?.let { Airplane(it, Wing(10, 20), Engine("Diesel", 150), Chassis("Steel", 18), false) }
+        if (input == "exit") {
+            continueCreating = false
+            break
+        }
 
-    println(airplane1.toString())
+        // Получение данных о самолете из консоли
+        print("Input wing lenght: ")
+        val wingLenght = readLine()?.toDoubleOrNull() ?: 0.0
+        print("Input wing area: ")
+        val wingArea = readLine()?.toDoubleOrNull() ?: 0.0
+        print("Input engine type: ")
+        val engineType = readLine() ?: ""
+        print("Input engine power: ")
+        val enginePower = readLine()?.toIntOrNull() ?: 0
+        print("Input chassis material: ")
+        val chassisMaterial = readLine() ?: ""
+        print("Input chassis wheel size: ")
+        val chassisWheelSize = readLine()?.toIntOrNull() ?: 0
 
-    //if (airplane1 != null) {
-    //    airplanes.add(airplane1)
-    //}
+        // Создание самолета
+        val airplane = Airplane(
+            input!!,
+            Wing(wingLenght, wingArea),
+            Engine(engineType, enginePower),
+            Chassis(chassisMaterial, chassisWheelSize),
+            false // Изначально самолет не летает
+        )
 
+        airplanes.add(airplane)
 
-    print("Fly: Yes or no ... ")
-    val inputFly = readLine()
+        println("Airplane created: $airplane")
+    }
 
-    if (inputFly == "yes") {
-        if (airplane1 != null) {
-            airplane1.fly = airplane1.fly(airplane1.hashCode())
-            println("${airplane1.toString()}")
+    // Сравнение элементов списка
+    var i = 1 // Начинаем со второго элемента
+    while (i < airplanes.size) {
+        val currentAirplane = airplanes[i]
+        val previousAirplane = airplanes[i - 1]
+
+        if (currentAirplane.equals(previousAirplane)) {
+            println("Duplicate found: $currentAirplane")
+            // Удаляем дубликат из списка
+            airplanes.removeAt(i) // Удаляем текущий элемент
+            // Не нужно делать шаг назад, так как список уже сдвинулся
+        } else {
+            i++ // Переходим к следующему элементу
         }
     }
 
-    else {
-        println("Самолет еще не взлетает '${airplane1.toString()}'")
-    }
+    println("Airplanes created:")
+    airplanes.forEach { println(it) }
+
+
+
+
+   // print("Fly: Yes or no ... ")
+    //val inputFly = readLine()
 
 
     /*

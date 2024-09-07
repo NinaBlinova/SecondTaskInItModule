@@ -1,6 +1,6 @@
 import java.util.Objects
 
-class Wing constructor (var lenght : Int, var area : Int) {
+class Wing(var lenght: Double, var area: Double) {
     // Переопределение метода toString(), необходим для вывода характеристики крыла
     override fun toString(): String {
         return "Wing: lenght = $lenght, area = $area"
@@ -22,7 +22,7 @@ class Wing constructor (var lenght : Int, var area : Int) {
 
     // Функция для изменения информации о крыле
     fun updateWing(newLenght: Int, newArea: Int) {
-        this.lenght = newLenght
-        this.area = newArea
+        this.lenght = newLenght.toDouble()
+        this.area = newArea.toDouble()
     }
 }
