@@ -63,6 +63,17 @@ fun main() {
     airplanes.forEach { println(it) }
 
 
+    airplanes.forEach {
+        print("Fly: Yes or no ... ")
+        var inputFly = readLine()
+        if (inputFly?.lowercase() == "yes") { // Используем lowercase() для сравнения
+            it.fly()
+        } else {
+            println("Airplane with path ${it.path} is not taking off")
+        }
+    }
+
+
 
 
    // print("Fly: Yes or no ... ")
