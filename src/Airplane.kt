@@ -6,7 +6,7 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
 
     // выводим информацию о самолете
     override fun toString(): String {
-        return "Chassis(path: '$path',  ${wings.toString()}, '${engine.toString()}', '${chassis.toString()}', fly: '$fly')"
+        return "Airplane [path: '$path',  ${wings.toString()}, '${engine.toString()}', '${chassis.toString()}', fly: '$fly']\n"
     }
 
     override fun hashCode(): Int {
@@ -21,10 +21,10 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
     }
 
     override fun equals(other: Any?): Boolean {
-        if (this === other) return true
+        if (this === other) {
+            return true
+        }
         if (other !is Airplane) return false
-
-        return path == other.path && wings == other.wings && engine == other.engine && chassis == other.chassis
+        return path == other.path && wings.equals(other.wings)  && engine.equals(other.engine)  && chassis.equals(other.chassis)
     }
-
 }

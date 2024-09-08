@@ -12,7 +12,6 @@ fun main() {
 
         if (input == "exit") {
             continueCreating = false
-
             break
         }
 
@@ -44,11 +43,10 @@ fun main() {
     }
 
     val tablo = Tablo(airplanes).removeDuplicates()
-    println(tablo.toString())
-
+    print(tablo.toString() + "\n")
 
     tablo.forEach {
-        print("Fly: Yes or no ... ")
+        println("Fly: Yes or no ... ")
         var inputFly = readLine()
         if (inputFly?.lowercase() == "yes") { // Используем lowercase() для сравнения
             it.fly()

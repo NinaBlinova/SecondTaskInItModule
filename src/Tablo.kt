@@ -4,28 +4,28 @@ class Tablo(airplanes: MutableList<Airplane>){
 
     fun removeDuplicates(): MutableList<Airplane> {
         // Сравнение элементов списка
-        var i = 1 // Начинаем со второго элемента
-        while (i < airplanes.size) {
-            val currentAirplane = airplanes[i]
-            val previousAirplane = airplanes[i - 1]
+        val uniqueAirplanes = mutableListOf<Airplane>() // Создаем новый список для уникальных самолетов
 
-            if (currentAirplane.equals(previousAirplane)) {
-                println("Duplicate found: $currentAirplane")
-                // Удаляем дубликат из списка
-                airplanes.removeAt(i) // Удаляем текущий элемент
-                // Не нужно делать шаг назад, так как список уже сдвинулся
-            } else {
-                i++ // Переходим к следующему элементу
+        for (i in 0 until airplanes.size) {
+            val currentAirplane = airplanes[i]
+            var isDuplicate = false // Флаг, указывающий, является ли текущий самолет дубликатом
+
+            // Проверяем, есть ли дубликат среди уже добавленных самолетов
+            for (j in 0 until uniqueAirplanes.size) {
+                if (currentAirplane.equals(uniqueAirplanes[j])) {
+                    isDuplicate = true
+                    break // Выходим из внутреннего цикла, если найден дубликат
+                }
+            }
+
+            // Если текущий самолет не дубликат, добавляем его в список уникальных
+            if (!isDuplicate) {
+                uniqueAirplanes.add(currentAirplane)
             }
         }
-        return airplanes
+
+        return uniqueAirplanes // Возвращаем список уникальных самолетов
     }
 
-    override fun toString(): String {
-        val sb = StringBuilder("Tablo(airplanes=")
-        sb.append(airplanes.joinToString(", ", "[", "]"))
-        sb.append(')')
-        return sb.toString()
-    }
 
 }
