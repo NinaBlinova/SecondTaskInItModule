@@ -10,7 +10,7 @@ class Chassis(val material: String, val wheelSize: Int) {
 
     // Переопределение метода hashCode(), чтобы писваиваь id для шасси
     override fun hashCode(): Int {
-        return Objects.hash(material, wheelSize)
+        return 1
     }
 
     // Переопределение метода toString(), чтобы выводить информцию о шасси

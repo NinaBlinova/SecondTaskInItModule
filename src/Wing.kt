@@ -17,7 +17,7 @@ class Wing(var lenght: Double, var area: Double) {
 
     // Переопределение метода hashCode(), чтобы задаывть id крыльев
     override fun hashCode(): Int {
-        return Objects.hash(lenght, area)
+        return 2
     }
 
     // Функция для изменения информации о крыле

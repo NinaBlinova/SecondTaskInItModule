@@ -10,7 +10,7 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
     }
 
     override fun hashCode(): Int {
-        return Objects.hash(path, wings, engine, chassis).absoluteValue
+        return wings.hashCode() * engine.hashCode() * chassis.hashCode() * (Random().nextInt(18) + 3)
     }
 
     fun fly() : Boolean {

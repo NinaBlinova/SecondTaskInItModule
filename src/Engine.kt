@@ -10,7 +10,7 @@ class Engine(val type: String, val power: Int) {
 
     // Переопределение метода hashCode(), чтобы давать id значение для двигателя
     override fun hashCode(): Int {
-        return Objects.hash(type, power)
+        return 3
     }
 
     // Переопределение метода toString(), чтоьбы выводить информацию о двигателе

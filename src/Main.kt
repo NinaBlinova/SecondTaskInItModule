@@ -39,7 +39,7 @@ fun main() {
         )
 
         airplanes.add(airplane)
-        println("Airplane created: $airplane")
+        println("Airplane created: $airplane - hashCode ${airplane.hashCode()}")
     }
 
     val tablo = Tablo(airplanes).removeDuplicates()
@@ -54,5 +54,4 @@ fun main() {
             println("Airplane with path ${it.path} is not taking off")
         }
     }
-
 }
