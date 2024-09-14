@@ -2,7 +2,7 @@ import java.util.Objects
 import java.util.Random
 import kotlin.math.absoluteValue
 
-class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassis: Chassis, var fly : Boolean) {
+class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassis: Chassis, var fly: Boolean) {
 
     // выводим информацию о самолете
     override fun toString(): String {
@@ -10,14 +10,33 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
     }
 
     override fun hashCode(): Int {
-        return wings.hashCode() * engine.hashCode() * chassis.hashCode() * (Random().nextInt(18) + 3)
+        println(wings.hashCode())
+        return wings.hashCode() + engine.hashCode() + chassis.hashCode() // + (Random().nextInt(18) + 3)
     }
 
-    fun fly() : Boolean {
-        val random = Random()
-        val flightTime = random.nextInt(18) + 3 // Рандомное число от 3 до 20
-        println("Airplane with path $path took off and is expected to fly for $flightTime hours.")
-        return true // You could return a boolean indicating success or failure of takeoff
+    fun fly(): Boolean {
+        println("Введите '1' для взлета или '2' для посадки:")
+        val input = readLine()
+
+        return when (input) {
+            "1" -> {
+                println("Самолет с маршрутом $path взлетел.")
+                chassis.moveAway()
+                engine.StartTheEnggine()
+                true // Успешный взлет
+            }
+            "2" -> {
+                println("Самолет с маршрутом $path приземляется.")
+                chassis.moveClose()
+                engine.TurtnOffTheEnggine()
+                true // Успешная посадка
+            }
+            else -> {
+                println("Некорректный выбор. Пожалуйста, введите '1' или '2'.")
+                false // Ошибка выбора
+            }
+        }
+
     }
 
     override fun equals(other: Any?): Boolean {
@@ -25,6 +44,6 @@ class Airplane(var path: String, var wings: Wing, var engine: Engine, var chassi
             return true
         }
         if (other !is Airplane) return false
-        return path == other.path && wings.equals(other.wings)  && engine.equals(other.engine)  && chassis.equals(other.chassis)
+        return path == other.path && wings.equals(other.wings) && engine.equals(other.engine) && chassis.equals(other.chassis)
     }
 }

@@ -1,7 +1,7 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-
+// проверка с null
     val airplanes = mutableListOf<Airplane>() // Список самолетов
 
     var continueCreating = true
@@ -46,12 +46,6 @@ fun main() {
     print(tablo.toString() + "\n")
 
     tablo.forEach {
-        println("Fly: Yes or no ... ")
-        var inputFly = readLine()
-        if (inputFly?.lowercase() == "yes") { // Используем lowercase() для сравнения
-            it.fly()
-        } else {
-            println("Airplane with path ${it.path} is not taking off")
-        }
+        it.fly()
     }
 }

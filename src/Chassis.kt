@@ -8,10 +8,20 @@ class Chassis(val material: String, val wheelSize: Int) {
         return material == other.material && wheelSize == other.wheelSize
     }
 
-    // Переопределение метода hashCode(), чтобы писваиваь id для шасси
+    // Переопределение метода hashCode()
     override fun hashCode(): Int {
-        return 1
+        var result = material.hashCode() + wheelSize.hashCode()
+        return result
     }
+
+    fun moveAway() {
+        println("Шасси отодвинуто.")
+    }
+
+    fun moveClose() {
+        println("Шасси придвинуто.")
+    }
+
 
     // Переопределение метода toString(), чтобы выводить информцию о шасси
     override fun toString(): String {

@@ -10,7 +10,15 @@ class Engine(val type: String, val power: Int) {
 
     // Переопределение метода hashCode(), чтобы давать id значение для двигателя
     override fun hashCode(): Int {
-        return 3
+        return type.hashCode() + power.hashCode()
+    }
+
+    fun StartTheEnggine() {
+        println("Двигатель запущен.")
+    }
+
+    fun TurtnOffTheEnggine() {
+        println("Двигатель выключен.")
     }
 
     // Переопределение метода toString(), чтоьбы выводить информацию о двигателе

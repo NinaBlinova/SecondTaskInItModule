@@ -26,8 +26,4 @@ class Tablo(airplanes: MutableList<Airplane>){
 
         return uniqueAirplanes // Возвращаем список уникальных самолетов
     }
-
-
-
-
 }
